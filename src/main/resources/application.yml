@@ -1,0 +1,24 @@
+server:
+  port: 7040
+
+ckin:
+  mysql:
+    driver: com.mysql.cj.jdbc.Driver
+    url-dev: jdbc:mysql://localhost:3306/ckin_api
+    url-batch: jdbc:mysql://localhost:3306/ckin_batch
+    user-name: root
+    password: 1234
+    maxIdle: 10
+    minIdle: 10
+    maxWaitMillis: 10000 # 10s
+
+spring:
+  batch:
+    job:
+      enabled: false
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        highlight_sql: true
