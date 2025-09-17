@@ -1,16 +1,19 @@
 server:
   port: 7040
 
+
 ckin:
   mysql:
     driver: com.mysql.cj.jdbc.Driver
-    url-dev: jdbc:mysql://localhost:3306/ckin_api
-    url-batch: jdbc:mysql://localhost:3306/ckin_batch
+    url-dev: jdbc:mysql://localhost:3306/ckin_api?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=2000
+    url-batch: jdbc:mysql://localhost:3306/ckin_batch?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=2000
     user-name: root
     password: 1234
     maxIdle: 10
     minIdle: 10
     maxWaitMillis: 10000 # 10s
+
+
 
 spring:
   batch:
@@ -22,3 +25,15 @@ spring:
         show_sql: true
         format_sql: true
         highlight_sql: true
+  datasource:
+    hikari:
+      data-source-properties:
+        useServerPrepStmts: true
+        cachePrepStmts: true
+        prepStmtCacheSize: 500
+        prepStmtCacheSqlLimit: 1000000
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      continue-on-error: true
