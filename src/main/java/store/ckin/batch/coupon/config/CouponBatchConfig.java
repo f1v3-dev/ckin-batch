@@ -6,6 +6,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import store.ckin.batch.common.BatchNameConstants;
 import store.ckin.batch.coupon.step.BirthCouponStep;
 
 /**
@@ -18,18 +19,16 @@ import store.ckin.batch.coupon.step.BirthCouponStep;
 @Configuration
 @RequiredArgsConstructor
 public class CouponBatchConfig {
+
     private final JobBuilderFactory jobBuilderFactory;
     private final BirthCouponStep birthCouponStep;
 
     /**
      * 생일 쿠폰을 지급하는 JOB 입니다.
-     *
-     * @return
-     * @throws Exception
      */
     @Bean
     public Job giveBirthCoupon() throws Exception {
-        return jobBuilderFactory.get("giveBirthCoupon")
+        return jobBuilderFactory.get(BatchNameConstants.GIVE_BIRTH_COUPON)
                 .start(birthCouponStep.giveBirthCouponStep())
                 .build();
     }

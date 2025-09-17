@@ -1,7 +1,5 @@
 package store.ckin.batch.coupon.step;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,6 +17,9 @@ import store.ckin.batch.coupon.dto.BirthCouponDto;
 import store.ckin.batch.coupon.dto.BirthMemberDto;
 import store.ckin.batch.coupon.mapper.BirthMapper;
 import store.ckin.batch.listener.BatchListener;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * BirthCouponStep
@@ -40,9 +41,6 @@ public class BirthCouponStep {
 
     /**
      * ItemReader, ItemWriter 실행하고 예외상황에 대한 로그를 남기는 Step 입니다.
-     *
-     * @return Step
-     * @throws Exception
      */
     @Bean
     public Step giveBirthCouponStep() throws Exception {
@@ -68,9 +66,6 @@ public class BirthCouponStep {
 
     /**
      * 생일자 회원의 아이디, 생일 날짜를 읽어오는 ItemReader 입니다.
-     *
-     * @return
-     * @throws Exception
      */
     @Bean
     public MyBatisPagingItemReader<BirthMemberDto> myBatisPagingItemReader() throws Exception {
@@ -84,8 +79,6 @@ public class BirthCouponStep {
 
     /**
      * 회원정보를 가지고 쿠폰을 생성하는 ItemProcessor 입니다.
-     *
-     * @return ItemProcessor
      */
     @Bean
     public ItemProcessor<BirthMemberDto, BirthCouponDto> processor() {
@@ -99,8 +92,6 @@ public class BirthCouponStep {
 
     /**
      * 쿠폰을 bulk insert 하는 ItemWriter 입니다.
-     *
-     * @return ItemWriter
      */
     @Bean
     public ItemWriter<BirthCouponDto> customItemWriter() {

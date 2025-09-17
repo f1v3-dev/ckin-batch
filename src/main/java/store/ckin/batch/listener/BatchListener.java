@@ -18,8 +18,6 @@ public class BatchListener {
 
     /**
      * Step 시작 전에 실행할 step의 이름을 남깁니다.
-     *
-     * @param execution
      */
     @BeforeStep
     public void beforeStep(StepExecution execution) {
@@ -28,8 +26,6 @@ public class BatchListener {
 
     /**
      * Step 시작 후에 실행된 step의 이름을 남깁니다.
-     *
-     * @param execution
      */
     @AfterStep
     public void afterStep(StepExecution execution) {
@@ -38,8 +34,6 @@ public class BatchListener {
 
     /**
      * Step 실행중에 발생한 에러를 남깁니다.
-     *
-     * @param e
      */
     @OnReadError
     public void onReadError(Exception e) {
