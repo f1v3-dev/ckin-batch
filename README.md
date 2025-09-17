@@ -173,15 +173,6 @@ flowchart TD
     style F fill:#d5e8d4
 ```
 
-## 기술 스택
-
-- **Framework**: Spring Boot, Spring Batch
-- **Database**: MySQL 8.0
-- **ORM**: JPA/Hibernate, MyBatis
-- **Connection Pool**: HikariCP
-- **Build Tool**: Maven
-
-
 ## 참고 자료
 
 - [MySQL Connector/J 설정 옵션](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html)
