@@ -6,7 +6,7 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import store.ckin.batch.common.BatchNameConstants;
+import store.ckin.batch.common.BatchConstants;
 import store.ckin.batch.coupon.step.BirthCouponStep;
 
 /**
@@ -28,7 +28,7 @@ public class CouponBatchConfig {
      */
     @Bean
     public Job giveBirthCoupon() throws Exception {
-        return jobBuilderFactory.get(BatchNameConstants.GIVE_BIRTH_COUPON)
+        return jobBuilderFactory.get(BatchConstants.GIVE_BIRTH_COUPON)
                 .start(birthCouponStep.giveBirthCouponStep())
                 .build();
     }

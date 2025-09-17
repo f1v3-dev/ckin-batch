@@ -13,6 +13,7 @@ import org.springframework.batch.item.ParseException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
+import store.ckin.batch.common.BatchConstants;
 import store.ckin.batch.coupon.dto.BirthCouponDto;
 import store.ckin.batch.coupon.dto.BirthMemberDto;
 import store.ckin.batch.coupon.mapper.BirthMapper;
@@ -31,12 +32,12 @@ import java.time.LocalDate;
 @Configuration
 @RequiredArgsConstructor
 public class BirthCouponStep {
+
     private final StepBuilderFactory stepBuilderFactory;
     private final SqlSessionFactory sqlSessionFactory;
     private final PlatformTransactionManager transactionManager;
     private final BatchListener birthCouponListener;
     private final BirthMapper birthMapper;
-    private static final int CHUNK_SIZE = 3;
     private Long couponTemplateId;
 
     /**
@@ -47,7 +48,7 @@ public class BirthCouponStep {
         readBirthPolicy();
 
         return stepBuilderFactory.get("giveBirthCouponStep")
-                .<BirthMemberDto, BirthCouponDto>chunk(CHUNK_SIZE)
+                .<BirthMemberDto, BirthCouponDto>chunk(BatchConstants.DEFAULT_CHUNK_SIZE)
                 .reader(myBatisPagingItemReader())
                 .processor(processor())
                 .writer(customItemWriter())
@@ -70,7 +71,7 @@ public class BirthCouponStep {
     @Bean
     public MyBatisPagingItemReader<BirthMemberDto> myBatisPagingItemReader() throws Exception {
         return new MyBatisPagingItemReaderBuilder<BirthMemberDto>()
-                .pageSize(CHUNK_SIZE)
+                .pageSize(BatchConstants.DEFAULT_CHUNK_SIZE)
                 .sqlSessionFactory(sqlSessionFactory)
                 .queryId("store.ckin.batch.coupon.mapper.BirthMapper.getBirthMember")
                 .build();
