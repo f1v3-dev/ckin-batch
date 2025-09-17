@@ -1,9 +1,9 @@
-package store.ckin.batch.product.service;
+package store.ckin.batch.book.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import store.ckin.batch.product.repository.PendingBookBulkRepository;
+import store.ckin.batch.book.repository.PendingBookBulkRepository;
 
 /**
  * 도서 이관 배치 처리를 위한 코어 서비스

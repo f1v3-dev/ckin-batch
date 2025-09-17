@@ -1,4 +1,4 @@
-package store.ckin.batch.product.repository;
+package store.ckin.batch.book.repository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

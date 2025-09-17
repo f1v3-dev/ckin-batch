@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import store.ckin.batch.product.service.BookMigrationService;
+import store.ckin.batch.book.service.BookMigrationService;
 
 /**
  * 도서 이관 배치 처리를 위한 스케줄러
