@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.batch.BatchDataSource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,7 @@ public class DataSourceConfig {
      *
      * @return 개발환경 DataSource
      */
+    @Primary
     @Bean(name = "dataSource")
     public DataSource dataSource() {
         return getDataSource(dbProperties.getUrlDev());
@@ -41,9 +43,9 @@ public class DataSourceConfig {
      *
      * @return 메타 테이블 DataSource
      */
-    @Primary
-    @Bean(name = "defaultDataSource")
-    public DataSource defaultDataSource() {
+    @BatchDataSource
+    @Bean(name = "metaDataSource")
+    public DataSource metaDataSource() {
         return getDataSource(dbProperties.getUrlBatch());
     }
 
