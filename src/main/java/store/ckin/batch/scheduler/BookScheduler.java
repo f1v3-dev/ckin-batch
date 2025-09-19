@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 public class BookScheduler {
 
     private final JobLauncher jobLauncher;
-    private final Job bookMigrationJob;
+    private final Job pendingBookMigrationJob;
 
     /**
      * 매일 새벽 2시에 승인된 PendingBook들을 Book 테이블로 이관
@@ -36,6 +36,6 @@ public class BookScheduler {
                 .addLong("time", System.currentTimeMillis())
                 .toJobParameters();
 
-        jobLauncher.run(bookMigrationJob, params);
+        jobLauncher.run(pendingBookMigrationJob, params);
     }
 }
