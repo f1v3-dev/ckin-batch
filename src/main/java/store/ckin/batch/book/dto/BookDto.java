@@ -1,26 +1,32 @@
 package store.ckin.batch.book.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.util.Date;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+/**
+ * Book 테이블에 저장될 데이터를 담는 DTO
+ *
+ * @author Seungjo, Jeong
+ */
+@Getter
+@Builder
 public class BookDto {
-    private Long pendingBookId;
-    private String title;
-    private String author;
-    private String publisher;
-    private LocalDate publicationDate;
-    private String isbn;
-    private BigDecimal price;
-    private Integer stock;
-    private String description;
-    private String status;
-    private LocalDateTime createdDate;
+
+    private final Long pendingBookId; // 상태 업데이트용
+    private final String isbn;
+    private final String title;
+    private final String description;
+    private final String publisher;
+    private final Date publicationDate;
+    private final Boolean packaging;
+    private final String state;
+    private final Integer stock;
+    private final Integer regularPrice;
+    private final Integer discountRate;
+    private final Integer salePrice;
+    private final String reviewRate;
+    private final Timestamp modificationTime;
 }
