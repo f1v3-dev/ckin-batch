@@ -18,9 +18,7 @@ public class BookMigrationService {
     private final PendingBookBulkRepository pendingBookBulkRepository;
 
     /**
-     * 승인된 PendingBook들을 Book 테이블로 이관하는 메��� 메서드
-     *
-     * @return 이관된 도서 수
+     * 승인된 PendingBook들을 Book 테이블로 이관하는 메서드
      */
     public int migrateApprovedBooks() {
         log.info("=== 도서 이관 배치 작업 시작 ===");
