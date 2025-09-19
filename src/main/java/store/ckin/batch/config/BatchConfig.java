@@ -16,7 +16,7 @@ import store.ckin.batch.listener.BatchListener;
 public class BatchConfig {
 
     @Bean
-    public BatchListener birthCouponListener() {
+    public BatchListener batchListener() {
         return new BatchListener();
     }
 }
