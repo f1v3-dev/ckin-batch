@@ -12,6 +12,7 @@ public class BatchConstants {
     // 배치 작업 관련 상수들
     public static final int DEFAULT_BATCH_SIZE = 100;
     public static final int DEFAULT_CHUNK_SIZE = 10;
+    public static final int BOOK_MIGRATION_CHUNK_SIZE = 100;
 
     private BatchConstants() {
 
