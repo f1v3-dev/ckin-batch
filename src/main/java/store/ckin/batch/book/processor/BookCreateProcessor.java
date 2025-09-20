@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class BookCreateProcessor implements ItemProcessor<PendingBookDto, BookDto> {
 
     @Override
-    public BookDto process(PendingBookDto pendingBook) throws Exception {
+    public BookDto process(PendingBookDto pendingBook) {
         return BookDto.builder()
                 .pendingBookId(pendingBook.getId()) // 상태 업데이트용 ID 보존
                 .isbn(pendingBook.getIsbn())
